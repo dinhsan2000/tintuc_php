@@ -7,29 +7,23 @@
     <title>Document</title>
 </head>
 <body>
+<?php require_once("connect.php"); ?>
 <?php
-require ('connect.php');
-$sql = "SELECT * FROM tintuc";
-$ket_qua = mysqli_query($ket_noi, $sql);
-//while($row=mysqli_fetch_array($ket_qua)){
+	$id = -1;
+	if (isset($_GET["id"])) {
+		$id = intval($_GET['id']);
+	}
+	// Lấy ra nội dung bài viết theo điều kiện id
+	$sql = "SELECT * FROM tintuc WHERE id = $id";
+	// Thực hiện truy vấn data thông qua hàm mysqli_query
+	$query = mysqli_query($ket_noi,$sql);
 ?>
-    <table border="1px" width="100%">
-        <tr>
-            <th>ID</th>
-            <th>Tiêu đề</th>
-            <th>Nội dung</th>
-            <th>Ảnh</th>
-        </tr>
-    </table>
-<?php foreach ($ket_qua as $row) { ?>
-<tr>
-    <td><?php echo $row['id'] ?></td>
-    <td><?php echo $row['tieude'] ?></td>
-    <td><?php echo $row['noidung'] ?></td>
-    <td>
-        <img src="<?php echo $row['anh'] ?>" width="100px" alt="">
-    </td>
-</tr>
-<?php } ?>
+			<?php 
+				while ( $data = mysqli_fetch_array($query) ) {
+			?>
+				<h3><?php echo $data['noidung']; ?></h3></div></ br>
+
+			<?php } ?>
+			</div>
 </body>
 </html>

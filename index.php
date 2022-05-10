@@ -22,6 +22,7 @@ $ket_qua = mysqli_query($ket_noi, $sql);
         <th>Tiêu đề</th>
         <th>Nội dung</th>
         <th>Ảnh</th>
+        <th>Xem</th>
         <th>Sửa</th>
         <th>Xoá</th>
     </tr>
@@ -33,6 +34,7 @@ $ket_qua = mysqli_query($ket_noi, $sql);
         <td>
             <img height="100px" src="<?php echo $tin_tuc['anh'] ?>" alt="">
         </td>
+        <td> <a href="view_baiviet.php?id=<?php echo $tin_tuc['id']; ?>">Xem</a></td>
         <td> <a href="edit_baiviet.php?id=<?php echo $tin_tuc['id']; ?>">Sửa</a></td>
         <td><a href="delete_baiviet.php?id=<?php echo $tin_tuc['id']; ?>">Xoá</a></td>
     </tr>
